@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  srv:
+    build: .
+    env_file: ./.env
+    ports:
+      - "28785:28785/tcp"
+      - "28785:28785/udp"
+      - "28786:28786/tcp"
+      - "28786:28786/udp"
