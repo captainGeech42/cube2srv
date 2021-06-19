@@ -12,15 +12,13 @@ RUN tar xjf sauerbraten.tar.bz2
 WORKDIR /srv/sauerbraten
 
 # copy base config
+RUN rm -f server-init.cfg
 COPY server-init.cfg .
 
-# copy run script
-COPY run.sh .
-RUN chmod +x run.sh
-
+# expose ports
 EXPOSE 28785/tcp
 EXPOSE 28785/udp
 EXPOSE 28786/tcp
 EXPOSE 28786/udp
 
-CMD "/srv/sauerbraten/run.sh"
+CMD "/srv/sauerbraten/bin_unix/linux_64_server"
