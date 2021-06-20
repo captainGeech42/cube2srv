@@ -8,3 +8,5 @@ services:
       - "28785:28785/udp"
       - "28786:28786/tcp"
       - "28786:28786/udp"
+    volumes:
+      - ${PWD}/server-init.cfg:/srv/sauerbraten/server-init.cfg
