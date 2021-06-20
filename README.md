@@ -1,4 +1,7 @@
 # cube2srv
+
+[![Docker Hub Publish](https://github.com/captainGeech42/cube2srv/workflows/Docker%20Hub%20Publish/badge.svg)](https://github.com/captainGeech42/cube2srv/actions?query=workflow%3A%22Docker+Hub+Publish%22) [![Docker Hub Image](https://img.shields.io/docker/v/captaingeech/cube2srv?color=blue)](https://hub.docker.com/repository/docker/captaingeech/cube2srv/general)
+
 Sauerbraten: Cube 2 server via Docker
 
 ## Usage:
