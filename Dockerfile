@@ -5,6 +5,8 @@ RUN apk add subversion build-base zlib-dev
 # Checkout the source code from svn to always get the latest version
 RUN svn checkout svn://svn.code.sf.net/p/sauerbraten/code/ srv
 
+RUN mkdir /.sauerbraten
+
 WORKDIR /srv/src
 
 # Build the server source

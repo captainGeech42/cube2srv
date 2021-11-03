@@ -4,10 +4,10 @@
 
 cd /srv
 
-if [ ! -e server-init.cfg ]; then
-    echo "ERROR: config file server-init.cfg does not exist, exiting"
+if [ ! -f /.sauerbraten/server-init.cfg ]; then
+    echo "ERROR: config /.sauerbraten/server-init.cfg does not exist, exiting"
     exit 1
 fi
 
 # config exists, start the server
-./sauer_server
+./sauer_server -q/.sauerbraten
