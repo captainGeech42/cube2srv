@@ -1,16 +1,21 @@
-FROM ubuntu:20.04
+FROM alpine:3.14
 
-RUN apt update -qq
-RUN apt install -y -qq wget
+RUN apk add subversion build-base zlib-dev
+
+# Checkout the source code from svn to always get the latest version
+RUN svn checkout svn://svn.code.sf.net/p/sauerbraten/code/ srv
+
+RUN mkdir /.sauerbraten
+
+WORKDIR /srv/src
+
+# Build the server source
+RUN make clean server
+
+# Move the executable
+RUN mv sauer_server ../
 
 WORKDIR /srv
-
-# download sauerbraten
-RUN wget -q -O sauerbraten.tar.bz2 https://pilotfiber.dl.sourceforge.net/project/sauerbraten/sauerbraten/2020_11_29/sauerbraten_2020_12_27_linux.tar.bz2
-RUN tar xjf sauerbraten.tar.bz2
-
-WORKDIR /srv/sauerbraten
-
 # remove original config
 # container user will volume mount their own 
 RUN rm -f server-init.cfg
@@ -25,4 +30,4 @@ EXPOSE 28785/udp
 EXPOSE 28786/tcp
 EXPOSE 28786/udp
 
-CMD "/srv/sauerbraten/run.sh"
+CMD ["./run.sh"]
